@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <form method="POST">
+    <h2>Email Spam Detection</h2>
+    <textarea name="email" placeholder="Paste email here..." required></textarea>
+    <select name="model">
+      <option value="baseline">Baseline</option>
+      <option value="nn">Neural Net</option>
+      <option value="rl">Reinforcement Agent</option>
+    </select>
+    <button type="submit">Predict</button>
+  </form>
+  {% if result is not none %}
+    <div class="result">
+      Result: <span class="{{ 'spam' if result==1 else 'ham' }}">
+        {{ "Spam" if result==1 else "Ham" }}
+      </span>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}
